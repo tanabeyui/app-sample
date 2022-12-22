@@ -1,0 +1,9 @@
+<h1>Admin::Homes#top</h1>
+<p>Find me in app/views/admin/homes/top.html.erb</p>
+
+<% @items.first(10).each do |item| %>
+  <%= image_tag (item['smallImageUrls'][0]) %>
+  <%= link_to admin_homes_showadmin_item_path(item), class:"text-danger" do%>
+    <%= item.name %>
+  <% end %>
+<% end %>
