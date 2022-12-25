@@ -1,10 +1,23 @@
-<% @items.each do |item| %>
-  <%= image_tag (item['smallImageUrls'][0]) %>
-  <%= link_to item.name, "#{item.url}" %>
-  <br>
-  <%= link_to admin_item_path(item, name: item.name, code: item.code, price: item.price, shop: item.shop.name, image: item.medium_image_urls) do%>
-    GOGO
+<h1>ランキング  <small><%= link_to "レビュー一覧", admin_items_review_path %></small></h1>
+
+<div class="search-box">
+  <%= form_with url: admin_items_path, method: :get, local: true do |f| %>
+    <div class="form-group">
+      <%= f.text_field :keyword, value: params[:keyword], class: "form-control" %>
+      <%= f.submit '製品名を検索', class: "form-control btn btn-success" %>
+    </div>
   <% end %>
-  t.string :item_code,                 null: false, default: ""
-  <br>
+  <% if @search_items.present? %>
+    <%= render 'admin/items/item', search_items: @search_items %>
+  <% end %>
+</div>
+
+<% @items.first(10).each do |item| %>
+  <%= image_tag (item['smallImageUrls'][0]) %>
+  <%= item.name %><br>
+  <%= number_with_delimiter(item.price) %>円
+  <%= link_to admin_item_path(item, name: item.name, code: item.code, price: item.price, shop: item.shop.name, image: item.medium_image_urls) do%>
+    詳細ページを見る
+  <% end %>
+  <hr>
 <% end %>

@@ -1,7 +1,25 @@
-<p>
-<%= image_tag (params[:image][0]), size: '200x200' %>
-</p>
+<p><%= image_tag (params[:image][0]), size: '200x200' %></p>
+<p><%= params[:name] %></p>
+<p>ショップ名：<%= params[:shop] %></p>
+<p><%= params[:price] %>円</p>
 
-<%= params[:name] %><br>
-<%= params[:shop] %>
-<p><%= params[:price] %></p>
+<div class="">
+  <h3>▼レビュー</h3>
+  <% @item_reviews.each do |item_review| %>
+    <%= item_review.created_at.strftime('%Y/%m/%d') %> :: <%= item_review.body %>
+  <% end %>
+</div>
+
+<div class="">
+  <h3>▼レビューを投稿</h3>
+  <%= form_with model: @review, url: admin_items_path, method: :post do |f| %>
+    <%= f.hidden_field :end_user_id, :value => "0" %>
+    <%= f.hidden_field :item_code, :value => params[:code] %>
+    <%= f.hidden_field :item_name, :value => params[:name] %>
+    <%= f.hidden_field :item_shop, :value => params[:shop] %>
+    <%= f.hidden_field :item_price, :value => params[:price] %>
+    <%= f.hidden_field :item_image, :value => params[:image][0] %>
+    <%= f.text_area :body, rows:"6", placeholder:"ここに説明文を記述します" %>
+    <%= f.submit '新規登録', class:"btn btn-light bg-gold btn-block" %>
+  <% end %>
+</div>

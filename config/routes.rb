@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/admin/items/search' => 'admin/items#search'
+  get '/admin/items/review' => 'admin/items#review'
 
   namespace :admin do
     resources :homes, only: [:top]

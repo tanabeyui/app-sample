@@ -1,7 +1,11 @@
-<% items.first(10).each do |item| %>
-<div class="list-group">
- <%= image_tag (item['smallImageUrls'][0]) %>
- <%= link_to item.name, "#{item.url}" %>
- <%= number_with_delimiter(item.price) %>円
-</div>
+<p>検索結果</p>
+
+<% search_items.first(10).each do |search_item| %>
+  <%= image_tag (search_item['smallImageUrls'][0]) %>
+  <%= search_item.name %><br>
+  <%= number_with_delimiter(search_item.price) %>円
+  <%= link_to admin_item_path(search_item, name: search_item.name, code: search_item.code, price: search_item.price, shop: search_item.shop.name, image: search_item.medium_image_urls) do%>
+    詳細ページを見る
+  <% end %>
+  <hr>
 <% end %>
