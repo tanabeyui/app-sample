@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :homes, only: [:top]
-    resources :items, only: [:index, :show, :search]
+    resources :items, only: [:index, :show, :new, :create]
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {

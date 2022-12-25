@@ -5,5 +5,6 @@
   <%= link_to admin_item_path(item, name: item.name, code: item.code, price: item.price, shop: item.shop.name, image: item.medium_image_urls) do%>
     GOGO
   <% end %>
+  t.string :item_code,                 null: false, default: ""
   <br>
 <% end %>
