@@ -2,8 +2,8 @@
   <%= image_tag (item['smallImageUrls'][0]) %>
   <%= link_to item.name, "#{item.url}" %>
   <br>
-  <%= link_to admin_item_path(item) do%>
-    <%= item.code %>
+  <%= link_to admin_item_path(item, name: item.name, code: item.code, price: item.price, shop: item.shop.name, image: item.medium_image_urls) do%>
+    GOGO
   <% end %>
   <br>
 <% end %>
