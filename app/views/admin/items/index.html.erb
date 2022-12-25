@@ -1,5 +1,9 @@
 <% @items.each do |item| %>
-  <%= link_to admin_item_path(item), class:"text-danger" do%>
-    <%= item.name %>
+  <%= image_tag (item['smallImageUrls'][0]) %>
+  <%= link_to item.name, "#{item.url}" %>
+  <br>
+  <%= link_to admin_item_path(item) do%>
+    <%= item.code %>
   <% end %>
+  <br>
 <% end %>
