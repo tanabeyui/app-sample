@@ -13,7 +13,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @reviews = Review.all
   end
 
   def create
@@ -30,7 +29,7 @@ class Admin::ItemsController < ApplicationController
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
     end
   end
-  
+
   def review
     @reviews = Review.all
   end

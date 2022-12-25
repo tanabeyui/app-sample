@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  get '/admin/' => 'admin/homes#top'
   get '/admin/items/search' => 'admin/items#search'
   get '/admin/items/review' => 'admin/items#review'
 
   namespace :admin do
-    resources :homes, only: [:top]
     resources :items, only: [:index, :show, :new, :create]
   end
 
