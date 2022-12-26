@@ -1,6 +1,7 @@
 class Admin::HomesController < ApplicationController
+
   def top
-    @items = RakutenWebService::Ichiba::Item.ranking
-    # @gifts = items.search(:age => 50)
+    @items = RakutenWebService::Ichiba::Item.ranking.page(@i)
   end
+
 end

@@ -1,20 +1,18 @@
 <h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
 
-<% @items.each do |item| %>
-  <p>
-    <%= image_tag (item['smallImageUrls'][0]) %>
-    <%= item.name %><br>
-    <%= item.catchcopy %><br>
-  </p>
+<% for @i in 1..3 do %>
+
+  <% @items.each do |item| %>
+    <p>
+    <% if item.name.include?("ギフト") || item.catchcopy.include?("ギフト") || item.caption.include?("ギフト") ||
+          item.name.include?("プレゼント") || item.catchcopy.include?("プレゼント") || item.caption.include?("プレゼント") %>
+      <%= item.rank %><br>
+      <%= image_tag (item['smallImageUrls'][0]) %>
+      <%= item.name %><br>
+      <%= item.catchcopy %><br>
+    <% end %>
+    </p>
+  <% end %>
 <% end %>
 
-<!--<% @items.each do |item| %>-->
-<!--  <p>-->
-<!--  <% if item.name.include?("ギフト") || item.catchcopy.include?("ギフト") || item.name.include?("プレゼント") || item.catchcopy.include?("プレゼント") %>-->
-<!--    <%= image_tag (item['smallImageUrls'][0]) %>-->
-<!--    <%= item.name %><br>-->
-<!--    <%= item.catchcopy %><br>-->
-<!--  <% end %>-->
-<!--  </p>-->
-<!--<% end %>-->
+
