@@ -1,12 +1,17 @@
 <p><%= image_tag (params[:image][0]), size: '200x200' %></p>
 <p><%= params[:name] %></p>
-<p>ショップ名：<%= params[:shop] %></p>
 <p><%= params[:price] %>円</p>
+<p>カテゴリー：
+  <% @root.parents.each do |parent| %>
+    <%= parent.name %>
+  <% end %>
+</p>
+<%= link_to "楽天ページ", params[:url] %>
 
 <div class="">
   <h3>▼レビュー</h3>
   <% @item_reviews.each do |item_review| %>
-    <%= item_review.created_at.strftime('%Y/%m/%d') %> :: <%= item_review.body %>
+    <%= item_review.created_at.strftime('%Y/%m/%d') %> :: <%= item_review.body %>  <%= item_review.item_shop %><br>
   <% end %>
 </div>
 
@@ -16,7 +21,9 @@
     <%= f.hidden_field :end_user_id, :value => "0" %>
     <%= f.hidden_field :item_code, :value => params[:code] %>
     <%= f.hidden_field :item_name, :value => params[:name] %>
-    <%= f.hidden_field :item_shop, :value => params[:shop] %>
+    <!--要らない<%= f.hidden_field :item_shop, :value => params[:shop] %>-->
+    <!--追加<%= f.hidden_field :item_url, :value => params[:url] %>-->
+    <!--追加<%= f.hidden_field :item_genre, :value => @category %>-->
     <%= f.hidden_field :item_price, :value => params[:price] %>
     <%= f.hidden_field :item_image, :value => params[:image][0] %>
     <%= f.text_area :body, rows:"6", placeholder:"ここに説明文を記述します" %>

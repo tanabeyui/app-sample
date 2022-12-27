@@ -8,6 +8,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    genre = params[:genre]
+    @root = RakutenWebService::Ichiba::Genre[genre]
+    @root.parents.each do |parent|
+      @category = parent.name
+    end
     @review = Review.new
     @item_reviews = Review.where(item_code: params[:code]).all
   end
