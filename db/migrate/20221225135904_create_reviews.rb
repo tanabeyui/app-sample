@@ -8,6 +8,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :item_shop,                 null: false, default: ""
       t.string :item_price,                null: false, default: ""
       t.string :item_image,                null: false, default: ""
+      t.float :all_rating,                 null: false, default: "0"
       t.timestamps
     end
   end

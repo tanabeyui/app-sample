@@ -11,3 +11,8 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("jquery")
+###
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')

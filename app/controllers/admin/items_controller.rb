@@ -44,7 +44,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:end_user_id, :body, :item_name, :item_image, :item_code, :item_shop, :item_price)
+    params.require(:review).permit(:end_user_id, :body, :item_name, :item_image, :item_code, :item_shop, :item_price, :all_rating )
   end
 
 end

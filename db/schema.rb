@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2022_12_25_135904) do
     t.string "item_shop", default: "", null: false
     t.string "item_price", default: "", null: false
     t.string "item_image", default: "", null: false
+    t.float "all_rating", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
